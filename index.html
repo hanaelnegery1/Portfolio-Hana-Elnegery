@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hana Elnegery – Front-End Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Hana Elnegery, a front-end developer building responsive Angular and TypeScript applications."
+    />
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f6f8ff;
+        --card: #ffffff;
+        --tint: #e9efff;
+        --ink: #0f1830;
+        --muted: #56617c;
+        --line: #d8e1f6;
+        --blue: #1f4fe0;
+        --blue-2: #4f7bff;
+        --blue-dark: #14349f;
+        --code-bg: #0f1a38;
+        --display: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+        --body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+        --mono: "IBM Plex Mono", Consolas, monospace;
+        --shadow:
+          0 1px 2px rgba(15, 24, 48, 0.05),
+          0 14px 34px -18px rgba(31, 79, 224, 0.35);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      body {
+        font-family: var(--body);
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        color: var(--ink);
+        background: var(--paper);
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          rgba(31, 79, 224, 0.1) 1px,
+          transparent 0
+        );
+        background-size: 26px 26px;
+      }
+      a {
+        color: var(--blue);
+      }
+      a:focus-visible,
+      .btn:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(246, 248, 255, 0.88);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 64px;
+        flex-wrap: wrap;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .logo i {
+        font-style: normal;
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--blue), var(--blue-2));
+        color: #fff;
+        font-size: 0.95rem;
+      }
+      nav {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 6px 14px;
+        border-radius: 999px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      nav a:hover {
+        background: var(--tint);
+        color: var(--blue);
+      }
+
+      .hero {
+        padding: 84px 0 70px;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 52px;
+        align-items: center;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 14px 5px 10px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--muted);
+        box-shadow: var(--shadow);
+        margin-bottom: 22px;
+      }
+      .pill b {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+      }
+      .hero h1 {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(2.9rem, 7.2vw, 5.2rem);
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+      }
+      .hero h1 span {
+        display: block;
+        background: linear-gradient(100deg, var(--blue), var(--blue-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero .role {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.45rem;
+        margin: 20px 0 14px;
+      }
+      .hero p.lead {
+        color: var(--muted);
+        max-width: 46ch;
+      }
+      .btns {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 22px;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 2px solid var(--blue);
+        transition:
+          transform 0.15s,
+          background 0.2s,
+          box-shadow 0.2s;
+      }
+      .btn.primary {
+        background: var(--blue);
+        color: #fff;
+        box-shadow: 0 10px 22px -10px rgba(31, 79, 224, 0.8);
+      }
+      .btn.primary:hover {
+        background: var(--blue-dark);
+        border-color: var(--blue-dark);
+        transform: translateY(-2px);
+      }
+      .btn.ghost {
+        color: var(--blue);
+        background: #fff;
+      }
+      .btn.ghost:hover {
+        background: var(--tint);
+      }
+      .btn.sm {
+        padding: 8px 16px;
+        font-size: 0.92rem;
+        border-radius: 8px;
+      }
+
+      .code-wrap {
+        position: relative;
+      }
+      .code-wrap::before {
+        content: "";
+        position: absolute;
+        inset: -18px -18px auto auto;
+        width: 70%;
+        height: 70%;
+        border-radius: 24px;
+        background: linear-gradient(135deg, var(--blue-2), var(--blue));
+        opacity: 0.18;
+        z-index: 0;
+      }
+      .code {
+        position: relative;
+        z-index: 1;
+        background: var(--code-bg);
+        color: #cfd8f5;
+        border-radius: 14px;
+        padding: 0;
+        font-family: var(--mono);
+        font-size: 0.84rem;
+        line-height: 1.75;
+        overflow: hidden;
+        box-shadow: 0 24px 50px -24px rgba(15, 24, 48, 0.7);
+      }
+      .code .bar {
+        display: flex;
+        gap: 7px;
+        padding: 12px 16px;
+        background: #16224a;
+      }
+      .code .bar i {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #3b4a7c;
+      }
+      .code .bar i:nth-child(1) {
+        background: #ff6b6b;
+      }
+      .code .bar i:nth-child(2) {
+        background: #ffd166;
+      }
+      .code .bar i:nth-child(3) {
+        background: #4ade80;
+      }
+      .code pre {
+        padding: 18px 22px 22px;
+        overflow-x: auto;
+        font: inherit;
+      }
+      .code .k {
+        color: #8fb0ff;
+      }
+      .code .s {
+        color: #9ee5b8;
+      }
+      .code .c {
+        color: #7482a8;
+      }
+      .code .p {
+        color: #ffd58a;
+      }
+
+      .stats {
+        padding-bottom: 20px;
+      }
+      .stats .wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .stat {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 18px 20px;
+        box-shadow: var(--shadow);
+      }
+      .stat b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 1.9rem;
+        line-height: 1.1;
+        color: var(--blue);
+      }
+      .stat span {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+      h2 {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+      .sub {
+        color: var(--muted);
+        max-width: 60ch;
+        margin-bottom: 40px;
+      }
+
+      /* about */
+      .about {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: start;
+      }
+      .about p + p {
+        margin-top: 14px;
+      }
+      .facts {
+        list-style: none;
+        display: grid;
+        gap: 14px;
+      }
+      .facts li {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--blue);
+        border-radius: 12px;
+        padding: 14px 18px;
+        box-shadow: var(--shadow);
+      }
+      .facts b {
+        display: block;
+        font-family: var(--display);
+      }
+      .facts span {
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+      }
+      .skillbox {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+      .skillbox h3 {
+        font-family: var(--display);
+        font-size: 1.15rem;
+        margin-bottom: 14px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        list-style: none;
+      }
+      .chips li {
+        background: var(--tint);
+        color: var(--blue-dark);
+        border-radius: 8px;
+        padding: 4px 12px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .chips li:hover {
+        background: var(--blue);
+        color: #fff;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 26px;
+      }
+      .project {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .project:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 2px 4px rgba(15, 24, 48, 0.06),
+          0 26px 44px -20px rgba(31, 79, 224, 0.5);
+      }
+      .project.feature {
+        border: 2px solid var(--blue);
+      }
+      .shot {
+        height: 150px;
+        position: relative;
+        padding: 14px 16px;
+      }
+      .shot .dots {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      .shot .dots i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .shot .l {
+        height: 12px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.55);
+        margin-bottom: 9px;
+      }
+      .shot .l.w1 {
+        width: 55%;
+      }
+      .shot .l.w2 {
+        width: 80%;
+        opacity: 0.7;
+      }
+      .shot .l.w3 {
+        width: 38%;
+        opacity: 0.5;
+      }
+      .shot .box {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        width: 34%;
+        height: 62px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.35);
+      }
+      .shot.a {
+        background: linear-gradient(135deg, #1f4fe0, #6f9bff);
+      }
+      .shot.b {
+        background: linear-gradient(135deg, #0f766e, #34d3b0);
+      }
+      .shot.c {
+        background: linear-gradient(135deg, #6d28d9, #a78bfa);
+      }
+      .shot.d {
+        background: linear-gradient(135deg, #0f1a38, #3a58c9);
+      }
+      .shot-img {
+        display: block;
+        width: 100%;
+        height: 210px;
+        object-fit: cover;
+        object-position: top;
+        border-bottom: 1px solid var(--line);
+        background: var(--tint);
+      }
+      .body {
+        padding: 24px 26px 26px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .badge {
+        align-self: flex-start;
+        background: #fff4d6;
+        color: #8a5a00;
+        border: 1px solid #f3d68a;
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 2px 12px;
+        border-radius: 999px;
+        margin-bottom: 10px;
+      }
+      .project h3 {
+        font-family: var(--display);
+        font-size: 1.4rem;
+        line-height: 1.2;
+      }
+      .project .type {
+        color: var(--muted);
+        font-size: 0.93rem;
+        margin: 2px 0 12px;
+      }
+      .project p {
+        margin-bottom: 12px;
+      }
+      .project ul {
+        margin: 0 0 14px 20px;
+      }
+      .project li + li {
+        margin-top: 5px;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: auto 0 0;
+        padding-top: 4px;
+        list-style: none;
+      }
+      .tags li {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        color: var(--blue-dark);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 2px 9px;
+        background: var(--paper);
+      }
+      .links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .timeline {
+        list-style: none;
+        border-left: 2px solid var(--line);
+        margin-left: 8px;
+      }
+      .timeline li {
+        position: relative;
+        padding: 0 0 18px 30px;
+      }
+      .timeline li:last-child {
+        padding-bottom: 0;
+      }
+      .timeline li::before {
+        content: "";
+        position: absolute;
+        left: -9px;
+        top: 20px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--blue);
+        border: 3px solid var(--paper);
+        box-shadow: 0 0 0 2px var(--blue);
+      }
+      .tl {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 18px 22px;
+        box-shadow: var(--shadow);
+      }
+      .timeline .when {
+        font-family: var(--mono);
+        font-size: 0.83rem;
+        color: var(--blue-dark);
+      }
+      .timeline h3 {
+        font-family: var(--display);
+        font-size: 1.2rem;
+      }
+      .timeline .org {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      .timeline p.d {
+        margin-top: 6px;
+        max-width: 64ch;
+      }
+
+      .cta {
+        background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+        color: #fff;
+        border-radius: 24px;
+        padding: 56px 44px;
+        box-shadow: 0 30px 60px -30px rgba(31, 79, 224, 0.8);
+      }
+      .cta h2 {
+        color: #fff;
+      }
+      .cta .sub {
+        color: #d6e0ff;
+        margin-bottom: 24px;
+      }
+      .cta a.mail {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(1.3rem, 3.6vw, 2rem);
+        color: #fff;
+        word-break: break-all;
+      }
+      .social {
+        display: flex;
+        gap: 12px;
+        margin-top: 26px;
+        flex-wrap: wrap;
+      }
+      .cta .btn {
+        background: #fff;
+        color: var(--blue-dark);
+        border-color: #fff;
+      }
+      .cta .btn:hover {
+        background: var(--tint);
+      }
+      .cta .btn.line {
+        background: transparent;
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.7);
+      }
+      .cta .btn.line:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+      footer {
+        padding: 30px 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          padding: 50px 0 40px;
+        }
+        .hero .wrap,
+        .about,
+        .skills,
+        .projects {
+          grid-template-columns: 1fr;
+        }
+        .stats .wrap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .project.feature {
+          grid-column: auto;
+        }
+        section {
+          padding: 56px 0;
+        }
+        .cta {
+          padding: 40px 24px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <a class="logo" href="#top"><i>HE</i>Hana Elnegery</a>
+        <nav aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#journey">Training</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="hero">
+        <div class="wrap">
+          <div>
+            <span class="pill"><b></b>Open to front-end opportunities</span>
+            <h1>Hana <span>Elnegery</span></h1>
+            <p class="role">Front-End Developer</p>
+            <p class="lead">
+              I build responsive web applications with Angular and TypeScript,
+              from reusable components to REST API integration.
+            </p>
+            <div class="btns">
+              <a class="btn primary" href="#projects">See my projects</a>
+              <a class="btn ghost" href="Hana Elnegery CV.pdf">Download CV</a>
+            </div>
+          </div>
+          <div class="code-wrap">
+            <div
+              class="code"
+              role="img"
+              aria-label="Decorative code snippet describing Hana"
+            >
+              <div class="bar"><i></i><i></i><i></i></div>
+              <pre><span class="k">@Component</span>({
+  selector: <span class="s">'app-hana'</span>,
+  standalone: <span class="p">true</span>
+})
+<span class="k">export class</span> Hana {
+  role   = <span class="s">'Front-End Developer'</span>;
+  stack  = [<span class="s">'Angular'</span>, <span class="s">'TypeScript'</span>,
+            <span class="s">'RxJS'</span>, <span class="s">'Tailwind'</span>];
+  langs  = [<span class="s">'Arabic'</span>, <span class="s">'English'</span>];
+}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="wrap">
+          <div class="stat"><b>4</b><span>Projects built</span></div>
+          <div class="stat">
+            <b>150h</b><span>Angular training at ITI</span>
+          </div>
+          <div class="stat">
+            <b>1st</b><span>Place, ITI Hackathon 2025</span>
+          </div>
+          <div class="stat">
+            <b>2</b><span>Languages, with RTL support</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="about">
+        <div class="wrap">
+          <h2>About me</h2>
+          <div class="about">
+            <div>
+              <p>
+                I'm a front-end developer who works mainly with Angular and
+                TypeScript. I have built and deployed responsive web apps
+                through hands-on projects, using reusable components, CRUD
+                operations and REST APIs.
+              </p>
+              <p>
+                I also work comfortably with JavaScript, HTML, CSS, Bootstrap
+                and Tailwind CSS, and I build interfaces in both English and
+                Arabic, including right-to-left layouts.
+              </p>
+            </div>
+            <ul class="facts">
+              <li>
+                <b>Education</b
+                ><span
+                  >B.A. in Linguistics and Translation, Damietta University
+                  (2022 – 2026)</span
+                >
+              </li>
+              <li>
+                <b>Achievement</b
+                ><span>1st place, ITI Summer Training Hackathon 2025</span>
+              </li>
+              <li>
+                <b>Languages</b
+                ><span>Arabic (native), English (very good)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="wrap">
+          <h2>Skills</h2>
+          <p class="sub">
+            The tools I use to build and ship front-end applications.
+          </p>
+          <div class="skills">
+            <div class="skillbox">
+              <h3>Angular</h3>
+              <ul class="chips">
+                <li>Components</li>
+                <li>Data binding</li>
+                <li>Directives</li>
+                <li>Pipes</li>
+                <li>Services</li>
+                <li>Dependency injection</li>
+                <li>Routing</li>
+                <li>Route guards</li>
+                <li>Reactive forms</li>
+                <li>HTTP interceptors</li>
+                <li>RxJS</li>
+                <li>Signals</li>
+                <li>Lazy loading</li>
+              </ul>
+            </div>
+            <div class="skillbox">
+              <h3>Languages</h3>
+              <ul class="chips">
+                <li>TypeScript</li>
+                <li>JavaScript (ES6+)</li>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>SASS</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+            <div class="skillbox">
+              <h3>UI and styling</h3>
+              <ul class="chips">
+                <li>Bootstrap 5</li>
+                <li>Tailwind CSS</li>
+                <li>Responsive design</li>
+                <li>Web accessibility</li>
+                <li>i18n and RTL</li>
+              </ul>
+            </div>
+            <div class="skillbox">
+              <h3>APIs, data and tools</h3>
+              <ul class="chips">
+                <li>REST APIs</li>
+                <li>CRUD</li>
+                <li>Local Storage</li>
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>npm</li>
+                <li>Postman</li>
+                <li>Clean code</li>
+                <li>SOLID</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="wrap">
+          <h2>Projects</h2>
+          <p class="sub">
+            Applications I built while learning and training. Open the live demo
+            to try them, or the GitHub repo to read the code.
+          </p>
+          <div class="projects">
+            <article class="project feature">
+              <div class="body">
+                <span class="badge"
+                  >1st place, ITI Summer Training Hackathon 2025</span
+                >
+                <h3>D2D Car Service</h3>
+                <p class="type">Car service web application, team project</p>
+                <p>
+                  I worked on the front-end team that won first place. I built
+                  user registration, technician listings, service listings and
+                  pagination.
+                </p>
+                <ul class="tags">
+                  <li>Angular</li>
+                  <li>TypeScript</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="project">
+              <img
+                class="shot-img"
+                src="images/Social.png"
+                alt="Social Network App login screen"
+                loading="lazy"
+              />
+              <div class="body">
+                <h3>Social Network App</h3>
+                <p class="type">Social media web application</p>
+                <ul>
+                  <li>
+                    Sign-in, personalized feeds, profiles, notifications and
+                    account management
+                  </li>
+                  <li>REST API integration for all user interactions</li>
+                </ul>
+                <ul class="tags">
+                  <li>Angular</li>
+                  <li>TypeScript</li>
+                  <li>REST APIs</li>
+                  <li>Tailwind CSS</li>
+                </ul>
+                <div class="links">
+                  <a
+                    class="btn primary sm"
+                    href="https://hanaelnegery1.github.io/Social-Network-App/#/login"
+                    target="_blank"
+                    rel="noopener"
+                    >Live demo</a
+                  >
+                  <a
+                    class="btn ghost sm"
+                    href="https://github.com/hanaelnegery1/Social-Network-App"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <img
+                class="shot-img"
+                src="images/KanbanProject.png"
+                alt="Kanban Board Task Manager board with To Do, In Progress and Completed columns"
+                loading="lazy"
+              />
+              <div class="body">
+                <h3>Kanban Board Task Manager</h3>
+                <p class="type">Task management app</p>
+                <ul>
+                  <li>To Do, In Progress and Done columns</li>
+                  <li>
+                    Create, edit and delete tasks, with priority and due dates
+                  </li>
+                  <li>
+                    Tasks saved in Local Storage, built from reusable components
+                  </li>
+                </ul>
+                <ul class="tags">
+                  <li>Angular</li>
+                  <li>TypeScript</li>
+                  <li>Bootstrap</li>
+                  <li>Local Storage</li>
+                </ul>
+                <div class="links">
+                  <a
+                    class="btn primary sm"
+                    href="https://hanaelnegery1.github.io/Kanban-Board-Task-Manager-Angular/"
+                    target="_blank"
+                    rel="noopener"
+                    >Live demo</a
+                  >
+                  <a
+                    class="btn ghost sm"
+                    href="https://github.com/hanaelnegery1/Kanban-Board-Task-Manager-Angular"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <img
+                class="shot-img"
+                src="images/ContactHubProject.png"
+                alt="ContactHub contacts dashboard"
+                loading="lazy"
+              />
+              <div class="body">
+                <h3>ContactHub CRUD System</h3>
+                <p class="type">Contact management app</p>
+                <ul>
+                  <li>Add, view, edit and delete contacts</li>
+                  <li>
+                    Client-side validation and contacts saved in Local Storage
+                  </li>
+                </ul>
+                <ul class="tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Bootstrap</li>
+                  <li>JavaScript</li>
+                </ul>
+                <div class="links">
+                  <a
+                    class="btn primary sm"
+                    href="https://hanaelnegery1.github.io/ContactHub-CRUD-System/"
+                    target="_blank"
+                    rel="noopener"
+                    >Live demo</a
+                  >
+                  <a
+                    class="btn ghost sm"
+                    href="https://github.com/hanaelnegery1/ContactHub-CRUD-System"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="journey">
+        <div class="wrap">
+          <h2>Training and Experience</h2>
+          <p class="sub">How I learned front-end development.</p>
+          <ol class="timeline">
+            <li>
+              <div class="tl">
+                <span class="when">Sep 2025 – Apr 2026</span>
+                <h3>Front-End Development Diploma</h3>
+                <p class="org">Route Academy</p>
+                <p class="d">
+                  Practical training in Angular, TypeScript, JavaScript,
+                  reusable components, routing, forms and REST API integration.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="tl">
+                <span class="when">Jul 2025 – Sep 2025</span>
+                <h3>Angular Summer Code Camp</h3>
+                <p class="org">ITI</p>
+                <p class="d">
+                  150 hours of hands-on Angular: components, services, routing,
+                  guards, reactive forms, HTTP requests and standalone
+                  components. Our team won first place in the hackathon.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="wrap">
+          <div class="cta">
+            <h2>Let's work together</h2>
+            <p class="sub">
+              I'm open to front-end opportunities. Email me and I'll reply as
+              soon as I can.
+            </p>
+            <a class="mail" href="mailto:elnegeryh@gmail.com"
+              >elnegeryh@gmail.com</a
+            >
+            <div class="social">
+              <a
+                class="btn"
+                href="https://github.com/hanaelnegery1"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                class="btn"
+                href="https://linkedin.com/in/hanaelnegery"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+              <a class="btn line" href="Hana Elnegery CV.pdf">Download CV</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Hana Elnegery</footer>
+  </body>
+</html>
